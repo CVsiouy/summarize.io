@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const summarizeText = require('./summarize.js');
 const port = 3000;
+const cors = require('cors');
+app.use(cors());
+
 
 
 // Parses JSON bodies (as sent by API clients)
