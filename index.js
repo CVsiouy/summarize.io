@@ -10,7 +10,10 @@ app.use(express.json());
 // Serves static files from the 'public' directory
 // app.use(express.static('public'));
 
-
+app.get('/', function(req, res){
+  console.log("RUNNING\n");
+  res.sendFile(__dirname + '/public/index.html');
+});
 // Handle POST requests to the '/summarize' endpoint
 
 app.post('/api/summarize', (req, res) => {
