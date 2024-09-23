@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const summarizeText = require('./summarize.js');
 const port = 3000;
-const cors = require('cors');
-app.use(cors());
 
 
 
@@ -11,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serves static files from the 'public' directory
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.get('/', function(req, res){
   console.log("RUNNING\n");
@@ -22,7 +20,7 @@ app.get('/', function(req, res){
 app.post('/api/summarize', (req, res) => {
 
   // get the text_to_summarize property from the request body
-    const text = req.body.text_to_summarize;
+  const text = req.body.text_to_summarize;
 
    // call your summarizeText function, passing in the text from the request
   summarizeText(text) 

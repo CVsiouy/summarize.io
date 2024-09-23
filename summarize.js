@@ -4,7 +4,7 @@ require('dotenv').config();
 // This is the function where the call to the API is made. Returns the summarized text as a string.
 
 async function summarizeText(text) {
-
+  console.log("Summarizing..\n");
   let data = JSON.stringify({
     "inputs": text,
     "parameters": {
@@ -12,7 +12,7 @@ async function summarizeText(text) {
       "min_length": 30
     }
   });
-
+  console.log("ENV ", process.env.ACCESS_TOKEN);
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
@@ -30,7 +30,6 @@ async function summarizeText(text) {
     return response.data[0].summary_text;
   }
   catch (error) {
-    console.error(process.env.ACCESS_TOKEN);
     console.log(error);
   }
 
